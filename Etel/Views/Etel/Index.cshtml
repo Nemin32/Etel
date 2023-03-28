@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Etel.Models;
+@model EtelClass
+
+@section head {
+    <title>Étel hozzáadás</title>
 }
+
+<h1>Új étel hozzáadása</h1>
+
+<form action="/Etel/Index" method="post" enctype="multipart/form-data">
+    @Html.LabelFor(t => t.Nev)
+    @Html.EditorFor(t => t.Nev)
+    @Html.ValidationMessageFor(t => t.Nev)
+    <br />
+
+    @Html.LabelFor(t => t.Tapertek)
+    @Html.EditorFor(t => t.Tapertek)
+    @Html.ValidationMessageFor(t => t.Tapertek)
+    <br />
+
+    @Html.LabelFor(t => t.Kategoria)
+    @Html.DropDownListFor(t => t.Kategoria, Html.GetEnumSelectList(typeof(EtelTipus)))
+    @Html.ValidationMessageFor(t => t.Kategoria)
+    <br />
+
+    @Html.LabelFor(t => t.Ar)
+    @Html.EditorFor(t => t.Ar)
+    @Html.ValidationMessageFor(t => t.Ar)
+    <br />
+
+    <label>Kép:</label>
+    <input type="file" name="picturedata" />
+    <br />
+
+    <input type="submit" value="Hozzáad" />
+</form>

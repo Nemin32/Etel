@@ -2,19 +2,26 @@
 
 namespace Etel.Models
 {
+    public enum EtelTipus
+    {
+        Reggeli,
+        Ebed,
+        Vacsora
+    }
+
     public class EtelClass
     {
         [Key]
         public string Id { get; set; }
         [Required]
-        string Nev { get; set; }
+        public string Nev { get; set; }
         [Required]
-        int Tapertek { get; set; }
+        public int Tapertek { get; set; }
         
         [Required]
-        string Kategoria { get; set; }
+        public string Kategoria { get; set; }
         [Required]
-        int Ar { get; set; }
+        public int Ar { get; set; }
         public string? ContentType { get; set; }
         public byte[]? Data { get; set; }
 

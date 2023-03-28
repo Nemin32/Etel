@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Etel.Models;
+@model IEnumerable<EtelClass>
+
+<select>
+    <option>ÖSSZES</option>
+    @Html.GetEnumSelectList(typeof(EtelTipus))
+</select>
+
+<table>
+    <thead>
+        <tr>
+            <th>Kép</th>
+            <th>Név</th>
+            <th>Tápérték</th>
+            <th>Kategória</th>
+            <th>Ár</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*foreach(var etel in Model)
+        {
+            @:<tr>
+                @:<td>@etel.ContentType</td>
+                @:<td>@etel.Nev</td>
+                @:<td>@etel.Tapertek</td>
+                @:<td>@etel.Kategoria</td>
+                @:<td>@etel.Ar</td>
+            @:</tr>
+        }*@
+    </tbody>
+</table>
