@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddOutputCaching();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IEtelRepository, EtelRepository>();
@@ -21,7 +22,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
 }
 app.UseStaticFiles();
-
+app.UseOutputCaching();
 app.UseRouting();
 app.MapControllers();
 app.MapControllerRoute(name: "default", pattern: "{controller=Etel}/{action=Index}/{id?}");

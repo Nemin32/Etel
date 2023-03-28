@@ -13,6 +13,7 @@ namespace Etel.Controllers
             this.repository = repository;
         }
 
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         public IActionResult Index()
         {
             return View();
@@ -31,6 +32,7 @@ namespace Etel.Controllers
         }
 
         [HttpGet]
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         public IActionResult List(string kategoria)
         {
             if (kategoria == null)
