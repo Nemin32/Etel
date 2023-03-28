@@ -2,7 +2,7 @@
 
 namespace Etel.Models
 {
-    public class Etel
+    public class EtelClass
     {
         [Key]
         public string Id { get; set; }
@@ -18,7 +18,7 @@ namespace Etel.Models
         public string? ContentType { get; set; }
         public byte[]? Data { get; set; }
 
-        public Etel()
+        public EtelClass()
         {
             Id = Guid.NewGuid().ToString();
         }
