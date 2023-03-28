@@ -24,11 +24,13 @@ namespace Etel.Data
 
         public IEnumerable<EtelClass> Read()
         {
+            System.Threading.Thread.Sleep(2000);
             return context.Foods;
         }
 
         public EtelClass? Read(string name)
         {
+            System.Threading.Thread.Sleep(2000);
             return context.Foods.FirstOrDefault(t => t.Nev == name);
         }
 

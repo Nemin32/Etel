@@ -12,11 +12,13 @@ namespace Etel.Controllers
             this.repository = repository;
         }
 
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         public IActionResult List()
         {
             return View(this.repository.Read());
