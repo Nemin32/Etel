@@ -1,10 +1,11 @@
 ﻿@using Etel.Models;
 @model IEnumerable<EtelClass>
 
-<select>
-    <option>ÖSSZES</option>
-    @Html.GetEnumSelectList(typeof(EtelTipus))
-</select>
+    <form action="/Etel/List" method="get">
+    @Html.DropDownList("kategoria", Html.GetEnumSelectList<EtelTipus>(), "ÖSSZES")
+        <input type="submit" value="Szűrés" />
+    </form>
+
 
 <table>
     <thead>

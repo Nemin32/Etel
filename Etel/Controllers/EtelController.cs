@@ -1,4 +1,5 @@
 ﻿using Etel.Data;
+using Etel.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Etel.Controllers
@@ -17,9 +18,29 @@ namespace Etel.Controllers
             return View();
         }
 
-        public IActionResult List()
+        [HttpPost]
+        public IActionResult Index(EtelClass model)
         {
-            return View(this.repository.Read());
+            if (model == null || !ModelState.IsValid)
+            {
+                return View();
+            }
+
+            this.repository.Create(model);
+            return View(null);
+        }
+
+        [HttpGet]
+        public IActionResult List(string kategoria)
+        {
+            if (kategoria == null)
+            {
+                var cucc = this.repository.Read();
+                return View(cucc);
+            }
+
+            var etelek = this.repository.Read().Where(e => e.Kategoria == kategoria);
+            return View(etelek);
         }
     }
 }
