@@ -13,6 +13,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+app.MapControllers();
+app.MapControllerRoute(name: "default", pattern: "{controller=Etel}/{action=Index}/{id?}");
 
 app.UseAuthorization();
 
