@@ -2,6 +2,13 @@
 
 namespace Etel.Models
 {
+    public enum EtelTipus
+    {
+        Reggeli,
+        Ebed,
+        Vacsora
+    }
+
     public class EtelClass
     {
         [Key]
