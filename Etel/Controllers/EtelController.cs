@@ -20,11 +20,20 @@ namespace Etel.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(EtelClass model)
+        public IActionResult Index(EtelClass model, IFormFile picturedata)
         {
             if (model == null || !ModelState.IsValid)
             {
                 return View();
+            }
+
+            using (var stream = picturedata.OpenReadStream())
+            {
+                byte[] buffer = new byte[picturedata.Length];
+                stream.Read(buffer, 0, (int)picturedata.Length);
+
+                model.Data = buffer;
+                model.ContentType = picturedata.ContentType;
             }
 
             this.repository.Create(model);
@@ -43,6 +52,19 @@ namespace Etel.Controllers
 
             var etelek = this.repository.Read().Where(e => e.Kategoria == kategoria);
             return View(etelek);
+        }
+        public IActionResult GetImage(string id)
+        {
+            var etel = repository.ReadFromId(id);
+            if (etel.ContentType != null && etel.ContentType.Length > 3)
+            {
+                return new FileContentResult(etel.Data, etel.ContentType);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
         }
     }
 }

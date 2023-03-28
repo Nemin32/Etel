@@ -4,8 +4,11 @@ namespace Etel.Models
 {
     public enum EtelTipus
     {
+        [Display(Name = "Reggeli")]
         Reggeli,
+        [Display(Name = "Ebéd")]
         Ebed,
+        [Display(Name = "Vacsora")]
         Vacsora
     }
 
@@ -14,13 +17,16 @@ namespace Etel.Models
         [Key]
         public string Id { get; set; }
         [Required]
+        [MaxLength(50)]
         public string Nev { get; set; }
         [Required]
+        [Range(10, 1000)]
         public int Tapertek { get; set; }
         
         [Required]
         public string Kategoria { get; set; }
         [Required]
+        [Range(100, 700)]
         public int Ar { get; set; }
         public string? ContentType { get; set; }
         public byte[]? Data { get; set; }

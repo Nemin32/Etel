@@ -21,10 +21,10 @@
         @foreach(var etel in Model)
         {
             @:<tr>
-                @:<td>@etel.ContentType</td>
+                @:<td><img height="100" src="@Url.Action("GetImage", "Etel", new {Id = etel.Id})"</td>
                 @:<td>@etel.Nev</td>
                 @:<td>@etel.Tapertek</td>
-                @:<td>@etel.Kategoria</td>
+                @:<td>@((EtelTipus)int.Parse(etel.Kategoria))</td>
                 @:<td>@etel.Ar</td>
             @:</tr>
         }
